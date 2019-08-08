@@ -7,7 +7,7 @@
 
 ### Things I used on this experiment
 - Jetpack version 3.2.1
-- Grab [buildJetsonTX2Kernel](https://github.com/jetsonhacks/buildJetsonTX2Kernel)from Jetsonhacks to help with the build kernel process 
+- Grab [buildJetsonTX2Kernel](https://github.com/jetsonhacks/buildJetsonTX2Kernel) from Jetsonhacks to help with the build kernel process. Check Jetsonhack's [video](https://www.youtube.com/watch?v=80c5j0rSN_0) on how to use this tool
 
 ### Get a fresh kernel source for Jetson
 - Get a Jetson kernel source by running script `buildJetsonTX2Kernel/scripts/getKernelSourcesNoGUI.sh`
@@ -22,13 +22,15 @@
 - You can use the `devio_zc.c` that I already applied the changes into in this repo.
 - You can rename this file back to `devio.c` and replace the original `devio.c` with this file.
 
+**Please note**: If you a different kernel version,  you may want to do manual patching yourself in case other updates from source code in different versions.
+
 ### Build the kernel
 ```
 apt-get install qt5-default -y
 cd /usr/src/kernel/kernel-4.4
 make xconfig
 ```
-A gui pop up, double-click on General Setup among the list on the left hand side. On the right hand side, find the row mentioned about Local version, then double-click and add the kernel's tag name for your new kernel. For example: `-usb-zerocopy`. Then **Save** & exit GUI.
+A GUI will pop up, double-click on General Setup among the list on the left hand side. On the right hand side, find the row mentioned about Local version, then double-click and add the kernel's tag name for your new kernel. For example: `-usb-zerocopy`. Then **Save** & exit GUI.
 
 Run `makeKernel.sh` script in `buildJetsonTX2Kernle/scripts` with sudo privilege and wait to finish (about 20 mins)
 
